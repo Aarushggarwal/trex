@@ -3,6 +3,7 @@ localStorage["highestscore"]=0;
 var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
+var jump;
 function preload(){
   trexrunning=loadAnimation("trex1.png","trex3.png","trex4.png")
   groundimg=loadImage("ground2.png")
@@ -16,6 +17,7 @@ function preload(){
   gameoverimg=loadImage("gameOver.png")
   restartimg=loadImage("restart.png")
   trex2=loadImage("trex_collided.png")
+  jump=loadSound("jump.mp3")
 }
 function setup() {
   createCanvas(600, 200);
@@ -51,6 +53,7 @@ function draw() {
   }
   if(keyWentDown("space")&&trex.collide(ground2)){ 
   trex.velocityY=-13;
+    jump.play();
   }
   trex.velocityY=trex.velocityY+0.8
   trex.collide(ground2)
